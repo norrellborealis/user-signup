@@ -28,28 +28,28 @@ def validate():
     email_err = ''
 
     if " " in username or username == '':
-        username_err = "Not a proper username."
+        username_err = "Not a valid username."
         error_check = True
     elif len(username) < 3 or len(username) > 20:
-        username_err = "Username is not the proper length."
+        username_err = "Username is not a valid length."
         error_check = True
     if ' ' in password or password == '':
-        password_err = "Not a proper password."
+        password_err = "Not a valid password."
         password = ''
         verify_password = ''
         error_check = True
     elif len(password) < 3 or len(password) > 20:
-        password_err = "Password is not the proper length."
+        password_err = "Password is not a valid length."
         password = ''
         verify_password = ''
         error_check = True
     if password != verify_password:
-        verify_password_error = "Passwords don't match."
+        verify_password_error = "Passwords do not match."
         password = ''
         verify_password = ''
         error_check = True
     elif verify_password == '':
-        verify_password_error = "Passwords don't match."
+        verify_password_error = "Passwords do not match."
         error_check = True
     
     if email != '':
@@ -62,14 +62,11 @@ def validate():
         if " " in email:
             email_err = "Not a valid email address."
             error_check = True
-        if len(email[0:email.find('@')]) < 3 or len(email[0:email.find('@')]) > 20:
-            email_err = "Not a valid email address."
-            error_check = True
     if error_check == True:
-        return render_template("signup_form.html", username_err=username_err,
+        return render_template('signup_form.html', username_err=username_err,
             password_err=password_err, verify_password_error=verify_password_error,
             email_err=email_err, username=username, password=password,
             verify_password=verify_password, email=email)
     else:
-        return render_template("welcome_greeting.html", username=username)
+        return render_template('welcome_greeting.html', username=username)
 app.run()

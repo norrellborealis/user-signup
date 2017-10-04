@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
     <h1>Create a new login!</h1>
@@ -11,11 +11,12 @@
             <label for="password">Password:
             <input id="password" type="password" name="password" value='{{password}}'/>
             </label>
+            <p class = "error">{{password_err}}</p>
         </br>
             <label for="verify-password">Verify Password:
             <input id="verify-password" type="password" name="verify_password" value='{{verify_password}}' />
             </label>
-            <p class = "error">{{password_err}} </p>
+            <p class = "error">{{verify_password_error}} </p>
         </br>
             <label for="email">Email (optional):
             <input id="email" type="text" name="email" value='{{email}}'/>
