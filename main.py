@@ -12,7 +12,7 @@ app.config['DEBUG'] = True
 
 @app.route("/")
 def index():
-    return render_template('signup_form.html')
+    return render_template('index.html')
 
 @app.route("/validate", methods=['POST'])
 def validate():
@@ -63,10 +63,10 @@ def validate():
             email_err = "Not a valid email address."
             error_check = True
     if error_check == True:
-        return render_template('signup_form.html', username_err=username_err,
+        return render_template('index.html', username_err=username_err,
             password_err=password_err, verify_password_error=verify_password_error,
             email_err=email_err, username=username, password=password,
             verify_password=verify_password, email=email)
     else:
-        return render_template('welcome_greeting.html', username=username)
+        return render_template('welcome_page.html', username=username)
 app.run()
